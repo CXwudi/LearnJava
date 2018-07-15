@@ -24,7 +24,8 @@ public class Lambda {
 				return o1.compareTo(o2);
 			}
 		});
-        Collections.sort(aaa, (String a1, String b1) -> {return a1.compareTo(b1);});//lambda way
+        //if the Interface is Functional Interface, which means only one abstruct method, then it supports lambda
+        Collections.sort(aaa, (String a1, String b1) -> {return a1.compareTo(b1);});
         Collections.sort(aaa, String::compareTo);
         Collections.sort(aaa, Comparator.naturalOrder());
         
