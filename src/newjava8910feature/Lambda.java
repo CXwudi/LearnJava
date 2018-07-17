@@ -1,8 +1,10 @@
 package newjava8910feature;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.IntBinaryOperator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +39,7 @@ public class Lambda {
         aaBinaryOperator = 					 (a1,b1) -> Math.max(a1, b1);
         aaBinaryOperator = 					 Math::max;
         
-        System.out.println(aaBinaryOperator.applyAsInt(4, 5));
+        Logger.getGlobal().log(Level.INFO, "{0}", aaBinaryOperator.applyAsInt(4, 5));
         
         //third example
         TriFunction<Integer,Integer,Integer,Integer> func = 
@@ -46,9 +48,10 @@ public class Lambda {
 				).andThen(i -> ++i);
 		
 		
-		var logger = Logger.getGlobal();
+		var logger = Logger.getLogger("my log");
 		logger.setLevel(Level.ALL);
-		logger.log(Level.INFO, "this is the result {0}", func.act(1, 2, 3));
+		//too complicated logging :(
+		logger.log(Level.INFO, "this is the result {0}, {1}", List.of(func.act(1, 2, 3), logger.isLoggable(Level.FINEST)).toArray());
 	}
 
 }
