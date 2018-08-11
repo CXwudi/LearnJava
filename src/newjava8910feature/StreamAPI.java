@@ -20,13 +20,14 @@ public class StreamAPI {
 	
 	public static List<Integer> getDivisors(int x){
 		return IntStream.rangeClosed(1, x)
+				.parallel()
 				.filter(i -> x % i ==0)
 				.mapToObj(Integer::valueOf).sorted()
 				.collect(Collectors.toList());
 	}
 	
 	public static List<Integer> getCommonDivisor(int x, int y) {
-		return x > y ? getCommonDivisor(y, x) : IntStream.rangeClosed(1, x).filter(i -> x % i == 0 && y % i == 0).mapToObj(Integer::valueOf).collect(Collectors.toList());
+		return x > y ? getCommonDivisor(y, x) : IntStream.rangeClosed(1, x).parallel().filter(i -> x % i == 0 && y % i == 0).mapToObj(Integer::valueOf).collect(Collectors.toList());
 	}
 	
 	public static void main(String[] args) {
