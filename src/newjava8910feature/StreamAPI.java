@@ -22,7 +22,8 @@ public class StreamAPI {
 		return IntStream.rangeClosed(1, x)
 				.parallel()
 				.filter(i -> x % i ==0)
-				.mapToObj(Integer::valueOf).sorted()
+				.mapToObj(Integer::valueOf)
+				.sorted()
 				.collect(Collectors.toList());
 	}
 	
