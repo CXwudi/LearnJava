@@ -18,7 +18,7 @@ interface TriFunction<T, K, U, R> {
 	}
 }
 public class GenericWildcard {
-	//wildcard often used in variable type declearation
+	//wildcard often used in variable type declaration
 	public static <T, V extends List<? super T>> List<? super T> aTestFunc(V list, T toadd) {
 		list.add(toadd);//add some variable of type 
 		//I made a change by VScode
