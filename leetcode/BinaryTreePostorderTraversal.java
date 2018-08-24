@@ -40,6 +40,7 @@ public class BinaryTreePostorderTraversal {
 		helper(list, node.left);
 		helper(list, node.right);
 		list.add(node.val);
+		
 	}
 	public static void main(String[] args) {
 
