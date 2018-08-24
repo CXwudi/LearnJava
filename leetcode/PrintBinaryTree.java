@@ -2,12 +2,6 @@
 import java.util.*;
 
 public class PrintBinaryTree {
-	public class TreeNode {
-	      int val;
-	      TreeNode left;
-	      TreeNode right;
-	      TreeNode(int x) { val = x; }
-	}
 	
 	public int deep (TreeNode root) {
 		return root == null ? 0: Math.max(deep(root.left), deep(root.right)) + 1;
