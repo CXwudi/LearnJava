@@ -23,7 +23,7 @@ public class ConstructBinaryTreeFromPreorderAndPostorderTraversal {
 
     /** create one node base on the a section of pre[] and a section of post[] */
     private TreeNode recursiveCreateTree(int[] pre, int i, int ie, int[] post, int j, int je) {
-        assert pre[i] == post[j] ? return "the first int of both array is not same";
+        assert pre[i] == post[j] :  "the first int of both array is not same";
         
         TreeNode root = new TreeNode(pre[i]);
         return null;
