@@ -49,7 +49,7 @@ public class ConstructBinaryTreeFromPreorderAndPostorderTraversal {
             node.left = recursiveCreateTree(pre, i + 1, ie, post, j + 1, je);
         } else { //two children
             int lValInPost = findValIndexFromAnotherArray(post, j, je, lVal);
-            int rValInPre  = findValIndexFromAnotherArray(pre, i, ie, rVal);
+            int rValInPre  = i + 1 + je - lValInPost;
             assert lValInPost != -1 && rValInPre != -1 : "invalid arrays to make tree";
             node.left = recursiveCreateTree(pre, i + 1, rValInPre, post, lValInPost, je);
             node.right = recursiveCreateTree(pre, rValInPre, ie, post, j + 1, lValInPost);
