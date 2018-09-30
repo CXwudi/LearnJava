@@ -10,7 +10,7 @@ import java.util.List;
  *
  */
 public class BSTtraversalTool {
-    public static enum Mode {PRE, IN, POST};
+    public enum Mode {PRE, IN, POST};//Learn Java: in-class enum are static by default
     public static List<Integer> traversalPreorder(TreeNode root){
         return traversalIn(root, Mode.PRE);
     }
