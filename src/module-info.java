@@ -8,5 +8,5 @@
 module LearnJava {
 	exports newjava8910feature;//so others project that import this project can use class in this folder
 	requires java.logging;
-	requires javafx.base;
+	requires javafx.base; //currently unavaliable by using User Library, don't know the reason
 }
