@@ -16,6 +16,7 @@ public class StreamAPI {
 	public static List<Integer> getDivisors(int x){
 		return IntStream.rangeClosed(1, x)
 				.parallel()
+				.peek(System.out::println)
 				.filter(i -> x % i ==0)
 				.mapToObj(Integer::valueOf) // same as .boxed()
 				.sorted()
