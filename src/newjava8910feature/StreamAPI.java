@@ -16,7 +16,7 @@ public class StreamAPI {
 	public static List<Integer> getDivisors(int x){
 		return IntStream.rangeClosed(1, x)
 				.parallel()
-				.peek(System.out::println)
+				//.peek(System.out::println)
 				.filter(i -> x % i ==0)
 				.mapToObj(Integer::valueOf) // same as .boxed()
 				.sorted()
@@ -42,11 +42,11 @@ public class StreamAPI {
 	}
 	
 	public static void testSort(ArrayList<Integer> list) {
-		var l1 = list.parallelStream();
+		var l1 = list.stream();
 		var l2 = new ArrayList<>(list);
 		var start = System.nanoTime();
 		System.out.println("start = " + start);
-		l1.sorted();// I dont know how to test stream sort 
+		l1.sorted().close();// why is it way faster than second way? 
 		System.out.println("end = " + (System.nanoTime() - start));
 		start = System.nanoTime();
 		System.out.println("start = " + start);
