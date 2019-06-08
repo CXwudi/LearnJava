@@ -61,10 +61,10 @@ public class StreamAPI {
 		new Thread(() -> System.out.println(getDivisors(34578636))).start();
 		new Thread(() -> System.out.println(getDivisors(210983748))).start();
 		System.out.println(getCommonDivisor(34578636,210983748));
-		testCollect(10);
-		var testList = IntStream.range(0, 10000000).boxed().sorted(Comparator.reverseOrder()).collect(Collectors.toCollection(ArrayList::new));
+		//testCollect(10);
+		//var testList = IntStream.range(0, 10000000).boxed().sorted(Comparator.reverseOrder()).collect(Collectors.toCollection(ArrayList::new));
 		//System.out.println(testList);
-		testSort(testList);
+		//testSort(testList);
 	}
 	
 }
