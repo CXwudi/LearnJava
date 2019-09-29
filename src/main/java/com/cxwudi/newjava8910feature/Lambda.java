@@ -1,4 +1,4 @@
-package com.cxwudi.newjava8910feature;
+package main.java.com.cxwudi.newjava8910feature;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,9 +44,9 @@ public class Lambda {
         //third example
         TriFunction<Integer,Integer,Integer,Integer> func = 
 				((TriFunction<Integer,Integer,Integer,Integer>) //Do you understand why do we typecast here
-				    (Integer i, Integer k, Integer j) -> i+j+k
+				    (Integer i, Integer k, Integer j) -> (i+j+k)
 				).andThen(i -> ++i);
-		
+		TriFunction<Integer, Integer, Integer, Integer> func2 = (a, b, c) -> a - b - c;
 		
 		var logger = Logger.getLogger("my log");
 		logger.setLevel(Level.ALL);

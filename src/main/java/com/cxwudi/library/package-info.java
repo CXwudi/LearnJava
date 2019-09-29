@@ -3,4 +3,4 @@
  * @author CX无敌
  * @version 1.0
  */
-package com.cxwudi.library;
+package main.java.com.cxwudi.library;

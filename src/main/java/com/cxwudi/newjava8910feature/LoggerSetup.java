@@ -1,4 +1,4 @@
-package newjava8910feature;
+package main.java.com.cxwudi.newjava8910feature;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;

@@ -1,4 +1,4 @@
-package com.cxwudi.leetcode;
+package main.java.com.cxwudi.leetcode;
 
 /**
  * The TreeNode used in Leetcode, usually applied for solving questions about BST

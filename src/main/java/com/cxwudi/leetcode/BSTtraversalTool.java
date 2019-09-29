@@ -1,10 +1,10 @@
-package com.cxwudi.leetcode;
+package main.java.com.cxwudi.leetcode;
 
 import java.util.ArrayList;
 import java.util.List;
 /**
- * This is not a question in com.cxwudi.leetcode.
- * This is just a util for printing BST from com.cxwudi.leetcode in
+ * This is not a question in leetcode.
+ * This is just a util for printing BST from leetcode in
  * pre-order, in-order, and post-order
  * @author CXwudi
  *

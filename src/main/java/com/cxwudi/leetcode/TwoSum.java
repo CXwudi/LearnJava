@@ -1,4 +1,4 @@
-package com.cxwudi.leetcode;
+package main.java.com.cxwudi.leetcode;
 
 import java.util.*;
 import java.util.stream.Collectors;

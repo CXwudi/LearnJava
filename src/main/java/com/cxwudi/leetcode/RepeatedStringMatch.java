@@ -1,4 +1,4 @@
-package leetcode;
+package main.java.com.cxwudi.leetcode;
 
 public class RepeatedStringMatch {
 

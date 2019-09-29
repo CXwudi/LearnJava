@@ -1,4 +1,4 @@
-package leetcode;
+package main.java.com.cxwudi.leetcode;
 
 import java.util.HashMap;
 import java.util.Objects;

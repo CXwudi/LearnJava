@@ -1,4 +1,4 @@
-package com.cxwudi.leetcode;
+package main.java.com.cxwudi.leetcode;
 
 /**
  * Created by CX无敌 on 2017-07-05.

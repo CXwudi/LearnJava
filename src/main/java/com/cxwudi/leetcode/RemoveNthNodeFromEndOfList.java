@@ -1,4 +1,4 @@
-package com.cxwudi.leetcode;
+package main.java.com.cxwudi.leetcode;
 
 public class RemoveNthNodeFromEndOfList {
     public class ListNode {

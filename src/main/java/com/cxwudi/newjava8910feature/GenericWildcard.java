@@ -1,4 +1,4 @@
-package com.cxwudi.newjava8910feature;
+package main.java.com.cxwudi.newjava8910feature;
 
 import java.util.ArrayList;
 import java.util.Arrays;
