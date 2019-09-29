@@ -1,6 +1,8 @@
 package main.java.com.cxwudi.library.logger;
 
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+
 /**
  * A set of my own log formatter, use it when setting up a logger {@link Handler}
  * @author 11134
@@ -34,6 +36,19 @@ public final class MyPredefinedFormatter {
 	 * @author CX无敌
 	 *
 	 */
-//	public static final CustomizableFormatter nokiaStyleFormatter = new CustomizableFormatter(dateFormatter, logFormatter)
+	public static final CustomizableFormatter nokiaStyleFormatter = new CustomizableFormatter(
+			new DateTimeFormatterBuilder()
+			.appendLiteral('[')
+			.appendPattern("MM/dd/yy")
+			.appendLiteral(' ')
+			.appendPattern("HH:mm:ss.SSS")
+			.appendLiteral(']')
+			.toFormatter(),
+			(time,source, recordLevel, message, throwable) -> {
+				if (message.equals("\n")) return "\n";
+				return String.format("%s %s:%s: %s %s%n",
+		        		time, recordLevel, source, message, throwable);
+			}
+			);
 
 }
