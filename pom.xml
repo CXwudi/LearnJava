@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Can not set maven compile version higher than java 10, otherwise, Maven install will get error -->
     <maven.compiler.source>1.10</maven.compiler.source>
     <maven.compiler.target>1.10</maven.compiler.target>
     <javafx.version>13</javafx.version>
