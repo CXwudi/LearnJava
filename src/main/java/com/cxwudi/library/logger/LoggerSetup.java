@@ -95,18 +95,4 @@ public final class LoggerSetup {
 		return handler;
 	}
 	
-	/**
-	 * Run to show sample usage
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		setupGlobalLogger(Level.ALL, createHandler(
-				() -> new AutoflushedStreamHandler(System.out), 
-				MyPredefinedFormatter.nokiaStyleFormatter, 
-				Level.ALL)
-		);
-		
-		Logger.getGlobal().info("Hello Miku");
-		
-	}
 }
