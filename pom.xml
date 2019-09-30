@@ -43,6 +43,8 @@
 	    <plugin>
 	        <artifactId>maven-compiler-plugin</artifactId>
 	        <version>3.8.1</version>
+	        <configuration>
+	        </configuration>
 	        <executions>
 	          <execution>
 	            <id>default-compile</id>

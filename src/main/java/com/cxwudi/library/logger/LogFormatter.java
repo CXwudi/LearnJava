@@ -1,7 +1,7 @@
 /**
  * 
  */
-package main.java.com.cxwudi.library.logger;
+package com.cxwudi.library.logger;
 
 import java.time.format.DateTimeFormatter;
 

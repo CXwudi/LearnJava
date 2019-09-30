@@ -1,4 +1,4 @@
-package main.java.com.cxwudi.leetcode;
+package com.cxwudi.leetcode;
 
 import java.util.*;
 

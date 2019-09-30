@@ -1,4 +1,4 @@
-package main.java.com.cxwudi.library.logger;
+package com.cxwudi.library.logger;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -30,27 +30,28 @@ public final class LoggerSetup {
 	
 	
 	//a piece of code to customize the global logger
-	public static void setupGlobalLogger() {
+	public static void setupGlobalLogger(Level level, Handler... handlers) {
 		LogManager.getLogManager().reset();// remove global logger's default handler
-		Logger.getGlobal().setLevel(Level.ALL);
-		
-		setupLogger(Logger.getGlobal(), 
-				createHandler(
-						() -> new AutoflushedStreamHandler(System.out), 
-						MyPredefinedFormatter.mySimplyFormatter, 
-						Level.ALL)
-				);
+		setupLogger(Logger::getGlobal, Level.ALL, handlers);
 	}
 	
 	/**
-	 * configure a logger using various handlers
-	 * @param logger the logger to be configured
+	 * configure a logger with defined level using various handlers
+	 * @param loggerSupplier the function that create a new logger to be configured
+	 * @param level the logger level
 	 * @param handlers a set of handler
+	 * @return logger
 	 */
-	public static void setupLogger(Logger logger, Handler... handlers) {
+	public static Logger setupLogger(
+			Supplier<Logger> loggerSupplier, 
+			Level level, 
+			Handler... handlers) {
+		Logger logger = loggerSupplier.get();
+		logger.setLevel(level);
 		for (Handler handler : handlers) {
 			logger.addHandler(handler);
 		}
+		return logger;
 	}
 	/**
 	 * Create a handler using 
@@ -59,7 +60,8 @@ public final class LoggerSetup {
 	 * @param level
 	 * @return a new handler
 	 */
-	public static Handler createHandler(Supplier<Handler> handlerSupplier, 
+	public static Handler createHandler(
+			Supplier<Handler> handlerSupplier, 
 			Formatter formatter, 
 			Level level) {
 		return setupHandler(handlerSupplier, formatter, level, null, null);
@@ -91,5 +93,20 @@ public final class LoggerSetup {
 		}
 		if (errorManager != null) handler.setErrorManager(errorManager);
 		return handler;
+	}
+	
+	/**
+	 * Run to show sample usage
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		setupGlobalLogger(Level.ALL, createHandler(
+				() -> new AutoflushedStreamHandler(System.out), 
+				MyPredefinedFormatter.nokiaStyleFormatter, 
+				Level.ALL)
+		);
+		
+		Logger.getGlobal().info("Hello Miku");
+		
 	}
 }

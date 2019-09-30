@@ -1,4 +1,4 @@
-package main.java.com.cxwudi.newjava8910feature;
+package com.cxwudi.newjava8910feature;
 interface Java89Interface{
     /**
      * All fields in interface MUST have been initialized, by default is <code>public static final</code>,

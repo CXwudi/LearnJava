@@ -1,4 +1,4 @@
-package main.java.com.cxwudi.playground;
+package com.cxwudi.playground;
 
 /**
  * Hello world!
