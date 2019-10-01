@@ -18,9 +18,9 @@ public class testLogger {
 
 	@Test
 	public void testDefaultUsage() {
-		LoggerUtil.setupGlobalLogger(Level.ALL, 
-				LoggerUtil.setupHandler(new AutoflushedStreamHandler(System.out),
-				MyPredefinedFormatter.nokiaStyleFormatter, Level.ALL));
+		LoggerUtil.setupGlobalLogger(
+				HandlerUtil.setupHandler(new AutoflushedStreamHandler(System.out),
+				MyPredefinedFormatter.nokiaStyleFormatter));
 		
 		Logger.getGlobal().info("Hello Miku");
 	}

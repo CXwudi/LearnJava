@@ -26,21 +26,6 @@ public class CustomizableFormatter extends SimpleFormatter {
 	 * the customized log format
 	 */
 	private LogFormatter logFormatter;
-	public CustomizableFormatter() {
-		super();
-		dateFormatter = DateTimeFormatter.ofPattern("MMM dd, yyyy h:mm:ss.SSS a");
-		logFormatter = (time,source, recordLevel, message, throwable) -> {
-			if (message.equals("\n")) return "\n";
-			return String.format("%s: %s %s%n",
-	        		String.format("%s %s %s",
-	        				time, 
-	        				source,
-	        				recordLevel),
-	        		message,
-	                throwable
-	                );
-		};
-	}
 
 	/**
 	 * create a formatter using customized date format and log format
@@ -53,7 +38,9 @@ public class CustomizableFormatter extends SimpleFormatter {
 	}
 
 
-
+	/**
+	 * Format the given message using customized {@link DateTimeFormatter} and {@link LogFormatter}
+	 */
 	@Override
     public String format(LogRecord record) {
         ZonedDateTime zdt = ZonedDateTime.ofInstant(

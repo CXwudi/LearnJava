@@ -33,5 +33,10 @@ public class AutoflushedStreamHandler extends StreamHandler {
 		super.publish(record);
 		flush();
 	}
+	
+	@Override
+	public synchronized void setOutputStream(OutputStream out) throws SecurityException {
+		super.setOutputStream(out);
+	}
 
 }

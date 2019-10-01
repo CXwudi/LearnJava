@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
  * @author CX无敌
  *
  */
+@FunctionalInterface
 public interface LogFormatter {
 	/**
 	 * Implement this function to define how does the log message looks like
