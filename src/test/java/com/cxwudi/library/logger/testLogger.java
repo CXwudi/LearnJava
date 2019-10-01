@@ -23,6 +23,12 @@ public class testLogger {
 				MyPredefinedFormatter.nokiaStyleFormatter));
 		
 		Logger.getGlobal().info("Hello Miku");
+		
+		var myLogger = LoggerUtil.setupLogger(Logger.getLogger("Miku"), 
+				HandlerUtil.setupHandler(new AutoflushedStreamHandler(System.out), 
+				MyPredefinedFormatter.mySimplyFormatter));
+		
+		myLogger.warning("Rin and Len");
 	}
 
 }
