@@ -25,7 +25,7 @@ import java.util.logging.SocketHandler;
 import java.util.logging.StreamHandler;
 
 
-public class LoggerSetup {
+public class COMP3303LoggerSetup {
 
 	public static void setupGlobalLogger(int protId) {
 		LogManager.getLogManager().reset();// remove global logger's default handler

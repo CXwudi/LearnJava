@@ -24,29 +24,28 @@ import java.util.logging.StreamHandler;
  * @author CX无敌
  *
  */
-public final class LoggerSetup {
+public final class LoggerUtil {
 	
-	private LoggerSetup() {}
+	private LoggerUtil() {}
 	
 	
 	//a piece of code to customize the global logger
 	public static void setupGlobalLogger(Level level, Handler... handlers) {
 		LogManager.getLogManager().reset();// remove global logger's default handler
-		setupLogger(Logger::getGlobal, Level.ALL, handlers);
+		setupLogger(Logger.getGlobal(), Level.ALL, handlers);
 	}
 	
 	/**
 	 * configure a logger with defined level using various handlers
-	 * @param loggerSupplier the function that create a new logger to be configured
+	 * @param logger the function that create a new logger to be configured
 	 * @param level the logger level
 	 * @param handlers a set of handler
 	 * @return logger
 	 */
 	public static Logger setupLogger(
-			Supplier<Logger> loggerSupplier, 
+			Logger logger, 
 			Level level, 
 			Handler... handlers) {
-		Logger logger = loggerSupplier.get();
 		logger.setLevel(level);
 		for (Handler handler : handlers) {
 			logger.addHandler(handler);
@@ -55,33 +54,33 @@ public final class LoggerSetup {
 	}
 	/**
 	 * Create a handler using 
-	 * @param handlerSupplier a function to create an instance of Handler
+	 * @param handler a function to create an instance of Handler
 	 * @param formatter the log format
 	 * @param level
 	 * @return a new handler
 	 */
-	public static Handler createHandler(
-			Supplier<Handler> handlerSupplier, 
+	public static Handler setupHandler(
+			Handler handler, 
 			Formatter formatter, 
 			Level level) {
-		return setupHandler(handlerSupplier, formatter, level, null, null);
+		return setupHandler(handler, formatter, level, null, null);
 	}
 
 	/**
 	 * create a handler using
-	 * @param handlerSupplier a function to create an instance of Handler
+	 * @param handler a function to create an instance of Handler
 	 * @param formatter the log format
 	 * @param level 
 	 * @param errorManager
 	 * @param encoding
 	 * @return a new handler
 	 */
-	public static Handler setupHandler(Supplier<Handler> handlerSupplier, 
+	public static Handler setupHandler(
+			Handler handler, 
 			Formatter formatter, 
 			Level level,
 			ErrorManager errorManager,
 			String encoding) {
-		Handler handler = handlerSupplier.get();
 		if (formatter != null) handler.setFormatter(formatter);
 		if (level != null) handler.setLevel(level);
 		if (encoding != null && !encoding.equals("")) {
