@@ -43,7 +43,9 @@ public final class LoggerUtil {
 	 * @param handlers a set of handlers
 	 */
 	public static void setupGlobalLogger(Level level, Handler... handlers) {
-		LogManager.getLogManager().reset();// remove global logger's default handler
+		for (Handler handler : Logger.getGlobal().getHandlers()) {
+			Logger.getGlobal().removeHandler(handler);
+		}
 		setupLogger(Logger.getGlobal(), level, handlers);
 	}
 	
