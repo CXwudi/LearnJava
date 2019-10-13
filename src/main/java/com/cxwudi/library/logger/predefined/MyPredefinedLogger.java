@@ -17,7 +17,7 @@ public final class MyPredefinedLogger {
 		LoggerUtil.setupGlobalLogger(MyPredefinedHandler.createDefaultHandlers(MyPredefinedFormatter.getBestFormatter()));
 	}
 	
-	public static void setupInvincibleLoggerFor(String loggerName) {
-		LoggerUtil.setupLogger(Logger.getLogger(loggerName), MyPredefinedHandler.createDefaultHandlers(MyPredefinedFormatter.getBestFormatter()));
+	public static Logger setupInvincibleLoggerFor(String loggerName) {
+		return LoggerUtil.setupLogger(Logger.getLogger(loggerName), MyPredefinedHandler.createDefaultHandlers(MyPredefinedFormatter.getBestFormatter()));	
 	}
 }
