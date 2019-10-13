@@ -2,7 +2,6 @@ package com.cxwudi.library.logger.util;
 
 import java.io.UnsupportedEncodingException;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 import java.util.logging.ErrorManager;
 import java.util.logging.Filter;
 import java.util.logging.Formatter;

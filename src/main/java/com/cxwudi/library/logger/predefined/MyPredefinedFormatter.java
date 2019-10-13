@@ -97,7 +97,7 @@ public final class MyPredefinedFormatter {
 	 */
 	public static CustomizableFormatter getOrCreateVisierStyleFormatter() {
 		if(visierStyleFormatter != null) return visierStyleFormatter;
-		// a function that can shorten a source name like "com.cxwudi.library.logger.testLogger" to "c.c.l.l.testLogger"
+		// a function that can shorten a source name like "com.cxwudi.library.logger.LoggerUtilTest" to "c.c.l.l.testLogger"
 		final UnaryOperator<String> shortenPathFunction = source -> {
 			var newSource = new StringBuilder();
 			if (source.contains(".")) {

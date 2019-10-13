@@ -8,7 +8,6 @@ import java.io.StringWriter;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.function.Function;
 import java.util.logging.LogRecord;
 import java.util.logging.SimpleFormatter;
 

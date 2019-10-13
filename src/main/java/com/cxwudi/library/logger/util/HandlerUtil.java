@@ -1,7 +1,6 @@
 package com.cxwudi.library.logger.util;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.logging.ErrorManager;
 import java.util.logging.Filter;

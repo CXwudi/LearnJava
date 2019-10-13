@@ -1,6 +1,7 @@
 package com.cxwudi.library.logger.util;
 
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import java.util.logging.Filter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -42,6 +43,11 @@ public class LoggerBuilder<L extends Logger> {
 		for (H h : handlers) {
 			logger.addHandler(h);
 		}
+		return this;
+	}
+	
+	public LoggerBuilder<L> setBy(Consumer<L> setupFunc){
+		setupFunc.accept(logger);
 		return this;
 	}
 	
