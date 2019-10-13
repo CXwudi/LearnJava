@@ -1,6 +1,8 @@
 package com.cxwudi.library.logger.util;
 
 import java.io.UnsupportedEncodingException;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.logging.ErrorManager;
 import java.util.logging.Filter;
 import java.util.logging.Formatter;
@@ -12,44 +14,49 @@ import java.util.logging.Level;
  * @author CX无敌
  *
  */
-public class HandlerBuilder {
+public class HandlerBuilder<H extends Handler> {
 	
-	private Handler handler;
+	private H handler;
 	
-	private HandlerBuilder(Handler handlerToBuild) {
+	private HandlerBuilder(H handlerToBuild) {
 		handler = handlerToBuild;
 	}
 	
-	public static HandlerBuilder setup(Handler handler) {
-		return new HandlerBuilder(handler);
+	public static <H extends Handler> HandlerBuilder<H> setup(H handler) {
+		return new HandlerBuilder<>(handler);
 	}
 	
-	public HandlerBuilder setLevel(Level newLevel) {
+	public HandlerBuilder<H> setLevel(Level newLevel) {
 		handler.setLevel(newLevel);
 		return this;
 	}
 	
-	public HandlerBuilder setFormatter(Formatter newFormatter) {
+	public HandlerBuilder<H> setFormatter(Formatter newFormatter) {
 		handler.setFormatter(newFormatter);
 		return this;
 	}
 	
-	public HandlerBuilder setFilter(Filter newFilter) {
+	public HandlerBuilder<H> setFilter(Filter newFilter) {
 		handler.setFilter(newFilter);
 		return this;
 	}
 	
-	public HandlerBuilder setEncoding(String encoding) throws SecurityException, UnsupportedEncodingException {
+	public HandlerBuilder<H> setEncoding(String encoding) throws SecurityException, UnsupportedEncodingException {
 		handler.setEncoding(encoding);
 		return this;
 	}
 	
-	public HandlerBuilder setErrorManager(ErrorManager em) {
+	public HandlerBuilder<H> setErrorManager(ErrorManager em) {
 		handler.setErrorManager(em);
 		return this;
 	}
 	
-	public Handler get() {
+	public HandlerBuilder<H> setBy(Consumer<H> setupFunc){
+		setupFunc.accept(handler);
+		return this;
+	}
+	
+	public H get() {
 		return handler;
 	}
 }
