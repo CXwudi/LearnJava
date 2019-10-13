@@ -1,34 +1,35 @@
-/**
- * 
- */
 package com.cxwudi.library.logger;
 
-import static org.junit.Assert.*;
-
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-/**
- * @author CX无敌
- *
- */
-public class testLogger {
+import com.cxwudi.library.logger.predefined.MyPredefinedFormatter;
+import com.cxwudi.library.logger.predefined.MyPredefinedHandler;
+import com.cxwudi.library.logger.util.AutoflushedStreamHandler;
+import com.cxwudi.library.logger.util.HandlerUtil;
+import com.cxwudi.library.logger.util.LoggerUtil;
+
+class testLogger {
 
 	@Test
 	public void testDefaultUsage() {
 		LoggerUtil.setupGlobalLogger(
 				HandlerUtil.setupHandler(new AutoflushedStreamHandler(System.out),
-				MyPredefinedFormatter.nokiaStyleFormatter));
+				MyPredefinedFormatter.getOrCreateNokiaStyleFormatter()));
 		
 		Logger.getGlobal().info("Hello Miku");
 		
 		var myLogger = LoggerUtil.setupLogger(Logger.getLogger("Miku"), 
 				HandlerUtil.setupHandler(new AutoflushedStreamHandler(System.out), 
-				MyPredefinedFormatter.mySimplyFormatter));
+				MyPredefinedFormatter.getOrCreateMySimplyFormatter()));
 		
 		myLogger.warning("Rin and Len");
+		
+		var myLogger2 = LoggerUtil.setupLogger(Logger.getLogger("Len"), 
+				MyPredefinedHandler.createDefaultHandler(
+						MyPredefinedFormatter.getOrCreateVisierStyleFormatter()));
+		myLogger2.warning("Luka is here");
+		myLogger2.info("miku and luka");
 	}
-
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.cxwudi.library.logger;
+package com.cxwudi.library.logger.util;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

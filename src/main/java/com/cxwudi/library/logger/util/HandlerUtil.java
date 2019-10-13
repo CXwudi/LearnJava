@@ -1,8 +1,10 @@
-package com.cxwudi.library.logger;
+package com.cxwudi.library.logger.util;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.logging.ErrorManager;
+import java.util.logging.Filter;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -26,7 +28,7 @@ public final class HandlerUtil {
 	public static Handler setupHandler(
 			Handler handler, 
 			Formatter formatter) {
-		return setupHandler(handler, formatter, DEFAULT_LEVEL, null, null);
+		return setupHandler(handler, formatter, DEFAULT_LEVEL);
 	}
 
 	/**
@@ -40,7 +42,23 @@ public final class HandlerUtil {
 			Handler handler, 
 			Formatter formatter, 
 			Level level) {
-		return setupHandler(handler, formatter, level, null, null);
+		return setupHandler(handler, formatter, level, null);
+	}
+	
+	/**
+	 * help setup a handler in one line of code using 
+	 * @param handler the Handler to be set
+	 * @param formatter the log format
+	 * @param level
+	 * @param filter 
+	 * @return a new handler
+	 */
+	public static Handler setupHandler(
+			Handler handler, 
+			Formatter formatter, 
+			Level level,
+			Filter filter) {
+		return setupHandler(handler, formatter, level, filter, null, null);
 	}
 
 	/**
@@ -56,6 +74,7 @@ public final class HandlerUtil {
 			Handler handler, 
 			Formatter formatter, 
 			Level level,
+			Filter filter,
 			ErrorManager errorManager,
 			String encoding) {
 		if (formatter != null) handler.setFormatter(formatter);
@@ -68,6 +87,7 @@ public final class HandlerUtil {
 			}
 		}
 		if (errorManager != null) handler.setErrorManager(errorManager);
+		if (filter != null) handler.setFilter(filter);
 		return handler;
 	}
 	

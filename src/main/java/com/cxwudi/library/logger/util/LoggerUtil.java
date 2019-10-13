@@ -1,21 +1,12 @@
-package com.cxwudi.library.logger;
+package com.cxwudi.library.logger.util;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 import java.util.logging.Filter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
-import java.util.logging.StreamHandler;
 /**
  * use this class to setup a logger, then you can replace your
  * {@code System.out} and {@code System.err} with {@code Logger.getGlobal().info()} and 
@@ -27,15 +18,15 @@ public final class LoggerUtil {
 	
 	public static Level defaultLevel = Level.ALL;
 	
+	private static boolean hasResetted = false;
+	
 	private LoggerUtil() {}
 	/**
 	 * a piece of code to customize the global logger with level {@code Level.ALL} using 
 	 * @param handlers a set of handlers
 	 */
 	public static void setupGlobalLogger(Handler... handlers) {
-		for (Handler handler : Logger.getGlobal().getHandlers()) {
-			Logger.getGlobal().removeHandler(handler);
-		}
+		if (!hasResetted) LogManager.getLogManager().reset();
 		setupLogger(Logger.getGlobal(), handlers);
 	}
 	
@@ -45,9 +36,7 @@ public final class LoggerUtil {
 	 * @param handlers a set of handlers
 	 */
 	public static void setupGlobalLogger(Level level, Handler... handlers) {
-		for (Handler handler : Logger.getGlobal().getHandlers()) {
-			Logger.getGlobal().removeHandler(handler);
-		}
+		if (!hasResetted) LogManager.getLogManager().reset();
 		setupLogger(Logger.getGlobal(), level, handlers);
 	}
 	
@@ -72,23 +61,23 @@ public final class LoggerUtil {
 			Logger logger, 
 			Level level, 
 			Handler... handlers) {
-		return setupLogger(logger, null, level, null, logger.getUseParentHandlers(), handlers);
+		return setupLogger(logger, level, null, null, logger.getUseParentHandlers(), handlers);
 	}
 	
 	/**
 	 * configure a logger with
 	 * @param logger the new logger to be configured
-	 * @param filter the filter for the logger
 	 * @param level the logger level
+	 * @param filter the filter for the logger
 	 * @param bundle 
 	 * @param useParentHandlers
-	 * @param handlers a set of handlers
+	 * @param handlers a set of handlers  
 	 * @return logger
 	 */
 	public static Logger setupLogger(
 			Logger logger, 
-			Filter filter,
 			Level level, 
+			Filter filter,
 			ResourceBundle bundle,
 			boolean useParentHandlers,
 			Handler... handlers) {
