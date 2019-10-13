@@ -27,7 +27,7 @@ class testLogger {
 		myLogger.warning("Rin and Len");
 		
 		var myLogger2 = LoggerUtil.setupLogger(Logger.getLogger("Len"), 
-				MyPredefinedHandler.createDefaultHandler(
+				MyPredefinedHandler.createDefaultHandlers(
 						MyPredefinedFormatter.getOrCreateVisierStyleFormatter()));
 		myLogger2.warning("Luka is here");
 		myLogger2.info("miku and luka");

@@ -1,5 +1,7 @@
 package com.cxwudi.library.logger.predefined;
 
+import java.util.logging.Logger;
+
 import com.cxwudi.library.logger.util.LoggerUtil;
 
 /**
@@ -12,6 +14,10 @@ public final class MyPredefinedLogger {
 	private MyPredefinedLogger() {}
 	
 	public static void setupInvincibleGlobalLogger() {
-		LoggerUtil.setupGlobalLogger(MyPredefinedHandler.createDefaultHandler(MyPredefinedFormatter.getBestFormatter()));
+		LoggerUtil.setupGlobalLogger(MyPredefinedHandler.createDefaultHandlers(MyPredefinedFormatter.getBestFormatter()));
+	}
+	
+	public static void setupInvincibleLoggerFor(String loggerName) {
+		LoggerUtil.setupLogger(Logger.getLogger(loggerName), MyPredefinedHandler.createDefaultHandlers(MyPredefinedFormatter.getBestFormatter()));
 	}
 }

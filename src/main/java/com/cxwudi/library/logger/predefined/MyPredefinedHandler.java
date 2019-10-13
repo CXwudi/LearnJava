@@ -2,14 +2,10 @@ package com.cxwudi.library.logger.predefined;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.logging.FileHandler;
-import java.util.logging.Filter;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
 
 import com.cxwudi.library.logger.util.AutoflushedStreamHandler;
 import com.cxwudi.library.logger.util.HandlerUtil;
@@ -27,7 +23,7 @@ public final class MyPredefinedHandler {
 	 * @param formatter the format of the log 
 	 * @return array of handlers
 	 */
-	public static Handler[] createDefaultHandler(Formatter formatter) {
+	public static Handler[] createDefaultHandlers(Formatter formatter) {
 		var handler1 = HandlerUtil.setupHandler(new AutoflushedStreamHandler(System.err), formatter, Level.WARNING);
 		var handler2 = HandlerUtil.setupHandler(new AutoflushedStreamHandler(System.out), formatter, Level.ALL, log -> log.getLevel().intValue() <= Level.INFO.intValue());
 		return new Handler[] {handler1, handler2};
