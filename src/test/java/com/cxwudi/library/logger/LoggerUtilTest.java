@@ -6,13 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import com.cxwudi.library.logger.predefined.MyPredefinedFormatter;
 import com.cxwudi.library.logger.predefined.MyPredefinedHandler;
+import com.cxwudi.library.logger.predefined.MyPredefinedLogger;
 import com.cxwudi.library.logger.util.AutoflushedStreamHandler;
 import com.cxwudi.library.logger.util.HandlerBuilder;
 import com.cxwudi.library.logger.util.HandlerUtil;
 import com.cxwudi.library.logger.util.LoggerBuilder;
 import com.cxwudi.library.logger.util.LoggerUtil;
 
-class testLogger {
+class LoggerUtilTest {
 
 	@Test
 	public void testDefaultUsage() {
@@ -33,6 +34,10 @@ class testLogger {
 						MyPredefinedFormatter.getOrCreateVisierStyleFormatter()));
 		myLogger2.warning("Luka is here");
 		myLogger2.info("miku and luka");
+		
+		var myLogger3 = MyPredefinedLogger.setupInvincibleLoggerFor("Best Miku Logger");
+		myLogger3.info("haha");
+		myLogger3.warning("Oh no");
 		
 	}
 }
