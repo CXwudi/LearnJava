@@ -1,7 +1,5 @@
 package com.cxwudi.leetcode;
 
-import java.util.HashSet;
-
 public class LinkedListCycleII {
 	class ListNode {
 		int val;

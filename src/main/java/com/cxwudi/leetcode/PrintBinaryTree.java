@@ -1,6 +1,7 @@
 package com.cxwudi.leetcode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrintBinaryTree {
 	

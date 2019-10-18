@@ -1,0 +1,16 @@
+<configuration debug="false"> <!-- debug="true" here will print out logger info when logger get setup -->
+  
+  <!-- layout -->
+  <property name="visierLoggerFormat" value="%date{HH:mm:ss.SSS} [%thread] %-5level %logger{10} - %msg%n" />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder> <!-- By default, this is  -->
+      <pattern>${visierLoggerFormat}</pattern>
+    </encoder>
+  </appender>
+  
+  <!-- setup global logger -->
+  <root level="trace">
+    <appender-ref ref="STDOUT" /> <!-- use a appender(handler) mentioned above -->
+  </root>
+</configuration>

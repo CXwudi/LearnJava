@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.function.UnaryOperator;
 
 import com.cxwudi.library.logger.util.CustomizableFormatter;
+import com.cxwudi.library.logger.util.HandlerUtil;
 
 /**
  * A set of my own log formatter, use it when setting up a logger {@link Handler}
