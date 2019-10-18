@@ -40,7 +40,7 @@
       <version>${javafx.version}</version>
     </dependency>
     
-    <!-- SFL4J and LogBack -->
+    <!-- SFL4J and LogBack and another dependency-->
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -51,7 +51,14 @@
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.2.3</version>
-    </dependency>    
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.codehaus.janino/janino -->
+    <dependency>
+        <groupId>org.codehaus.janino</groupId>
+        <artifactId>janino</artifactId>
+        <version>3.1.0</version>
+    </dependency>
+
   
   </dependencies>
   
