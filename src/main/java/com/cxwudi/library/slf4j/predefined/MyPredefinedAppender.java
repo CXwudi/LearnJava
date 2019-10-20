@@ -7,7 +7,6 @@ import com.cxwudi.library.slf4j.util.FunctionalMatcherFilter;
 import com.cxwudi.library.slf4j.util.SampleLoggerContext;
 
 import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.filter.LevelFilter;
 import ch.qos.logback.classic.filter.ThresholdFilter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.ConsoleAppender;

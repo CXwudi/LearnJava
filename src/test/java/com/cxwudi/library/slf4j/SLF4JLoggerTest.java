@@ -32,4 +32,11 @@ class SLF4JLoggerTest {
 		logger.info("Hi Miku, from code");
 		logger.warn("Hi Vocaloid");
 	}
+	
+	@Test
+	void testOtherLogger() {
+		var logger = MyPredefinedLogger.setupInvincibleLoggerFor("Vocaloid.Miku");
+		logger.info("This is Miku");
+		logger.warn("This is Meiko");
+	}
 }

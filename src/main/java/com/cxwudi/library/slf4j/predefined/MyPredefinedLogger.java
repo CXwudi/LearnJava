@@ -21,6 +21,15 @@ public final class MyPredefinedLogger {
 		}
 		return logger;
 	}
+	
+	public static Logger setupInvincibleLoggerFor(String name) {
+		var logger = (Logger)LoggerFactory.getLogger(name);
+		var appenders = MyPredefinedAppender.createDefaultConsoleAppenders(MyPredefinedEncoder.getMyBestEncoderWithLoggerName());
+		for (ConsoleAppender<ILoggingEvent> consoleAppender : appenders) {
+			logger.addAppender(consoleAppender);
+		}
+		return logger;
+	}
 
 	private static void resetLogger(Logger logger) {
 		//logger.detachAndStopAllAppenders();
