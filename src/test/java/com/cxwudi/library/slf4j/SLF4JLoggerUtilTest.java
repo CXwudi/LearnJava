@@ -23,14 +23,15 @@ class SLF4JLoggerUtilTest {
 	@Test
 	void testCreatingAppenders() {
 		Appender<ILoggingEvent>[] array = MyPredefinedAppender.createDefaultConsoleAppenders(MyPredefinedEncoder.getOrCreateVisierStyleEncoderWithClassName());
+		assertTrue(true);
 	}
 
 	@Test
 	void testRootLogger() {
 		var logger = MyPredefinedLogger.setupInvincibleRootLogger();
-		
 		logger.info("Hi Miku, from code");
 		logger.warn("Hi Vocaloid");
+		assertTrue(true);
 	}
 	
 	@Test
@@ -38,5 +39,6 @@ class SLF4JLoggerUtilTest {
 		var logger = MyPredefinedLogger.setupInvincibleLoggerFor("Vocaloid.Miku");
 		logger.info("This is Miku");
 		logger.warn("This is Meiko");
+		assertTrue(true);
 	}
 }

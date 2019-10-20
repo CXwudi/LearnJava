@@ -19,6 +19,7 @@ public final class MyPredefinedAppender {
 	public static ConsoleAppender<ILoggingEvent>[] createDefaultConsoleAppenders (Encoder<ILoggingEvent> encoder) {
 		var stdoutAppender = AppenderBuilder.build(new ConsoleAppender<ILoggingEvent>())
 				.setContext(SampleLoggerContext.get())
+				.setName("STDOUT")
 				.setByFunc(appender -> {
 			appender.setEncoder(encoder);
 			appender.setImmediateFlush(true);
@@ -32,6 +33,7 @@ public final class MyPredefinedAppender {
 		
 		var stderrAppender = AppenderBuilder.build(new ConsoleAppender<ILoggingEvent>())
 				.setContext(SampleLoggerContext.get())
+				.setName("STDERR")
 				.setByFunc(appender -> {
 			appender.setEncoder(encoder);
 			appender.setImmediateFlush(true);
