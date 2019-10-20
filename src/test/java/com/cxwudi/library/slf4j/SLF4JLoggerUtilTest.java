@@ -18,7 +18,7 @@ import ch.qos.logback.core.Appender;
  * @author CX无敌
  *
  */
-class SLF4JLoggerTest {
+class SLF4JLoggerUtilTest {
 
 	@Test
 	void testCreatingAppenders() {
