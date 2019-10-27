@@ -2,8 +2,10 @@
 <Configuration status="WARN">
 
   <Properties>
-    <Property name="loggerName">logger</Property>
-    <Property name="visierLogBackFormat">%date{HH:mm:ss.SSS} [%thread] %highlight{%-5level} %style{%${loggerName}{1.}}{cyan} - %msg%n%throwable</Property>
+    <Property name="loggerName">logger</Property> <!-- put either logger or class -->
+    <Property name="cyanName">%style{%${loggerName}{1.}}{bright,cyan}</Property>
+    <Property name="colorLevel">%highlight{%-5level}{STYLE=Default}</Property>
+    <Property name="visierLogBackFormat">%date{HH:mm:ss.SSS} [%thread] ${colorLevel} ${cyanName} - %msg%n%throwable</Property>
     <property name="myCurrentBestFormatter">${visierLogBackFormat}</property>
   </Properties>
 

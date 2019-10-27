@@ -18,6 +18,7 @@
     <java.version>11</java.version>
     <javafx.version>13</javafx.version>
     <junit.jupiter.version>5.5.2</junit.jupiter.version>
+    <log4j2.version>2.12.1</log4j2.version>
   </properties>
 
   <dependencies>
@@ -26,6 +27,7 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
     </dependency>
     
     <!-- JavaFx -->
@@ -40,34 +42,42 @@
       <version>${javafx.version}</version>
     </dependency>
     
-    <!-- SFL4J and LogBack and another dependency-->
+    <!-- SFL4J logger facade-->
     <dependency><!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>1.7.28</version>
     </dependency>
-    <dependency> 
+    
+    <!-- Logback and required dependency -->
+    <!-- <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.2.3</version>
-    </dependency>
-    <dependency><!-- https://mvnrepository.com/artifact/org.codehaus.janino/janino -->
+    </dependency> 
+    <dependency>
         <groupId>org.codehaus.janino</groupId>
         <artifactId>janino</artifactId>
         <version>3.1.0</version>
-    </dependency>
+    </dependency> -->
 
     <!-- Log4j2, the best logger -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
-      <version>2.12.1</version>
+      <version>${log4j2.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.12.1</version>
+      <version>${log4j2.version}</version>
     </dependency>
+    <dependency><!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>${log4j2.version}</version>
+    </dependency>
+    
   </dependencies>
   
 
