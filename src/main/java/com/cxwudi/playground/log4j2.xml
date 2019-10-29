@@ -6,6 +6,7 @@
     <Property name="cyanName">%style{%${loggerName}{1.}}{bright,cyan}</Property>
     <Property name="colorLevel">%highlight{%-5level}{STYLE=Default}</Property>
     <Property name="visierLogBackFormat">%date{HH:mm:ss.SSS} [%thread] ${colorLevel} ${cyanName} - %msg%n%throwable</Property>
+    
     <property name="myCurrentBestFormatter">${visierLogBackFormat}</property>
   </Properties>
 

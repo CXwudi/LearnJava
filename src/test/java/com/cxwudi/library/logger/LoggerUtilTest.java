@@ -2,6 +2,8 @@ package com.cxwudi.library.logger;
 
 import java.util.logging.Logger;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 import com.cxwudi.library.logger.predefined.MyPredefinedFormatter;
@@ -37,5 +39,6 @@ class LoggerUtilTest {
 		myLogger3.info("haha");
 		myLogger3.warning("Oh no");
 		
+		assertTrue(true);
 	}
 }
