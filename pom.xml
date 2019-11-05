@@ -49,6 +49,13 @@
       <version>1.7.28</version>
     </dependency>
     
+    <!-- Support of async logger -->
+    <dependency><!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+      <groupId>com.lmax</groupId>
+      <artifactId>disruptor</artifactId>
+      <version>3.4.2</version>
+    </dependency>
+    
     <!-- Logback and required dependency -->
     <!-- <dependency>
       <groupId>ch.qos.logback</groupId>
