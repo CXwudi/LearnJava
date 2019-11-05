@@ -1,4 +1,4 @@
-package com.cxwudi.library.logger.predefined;
+package com.cxwudi.library.jul_logger.predefined;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,8 +7,8 @@ import java.util.logging.Formatter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 
-import com.cxwudi.library.logger.util.AutoflushedStreamHandler;
-import com.cxwudi.library.logger.util.HandlerUtil;
+import com.cxwudi.library.jul_logger.util.AutoflushedStreamHandler;
+import com.cxwudi.library.jul_logger.util.HandlerUtil;
 /**
  * A pre-defined handlers set, can trade this class as a wrapper of {@link HandlerUtil}
  * @author CX无敌

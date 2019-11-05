@@ -1,12 +1,12 @@
-package com.cxwudi.library.logger.predefined;
+package com.cxwudi.library.jul_logger.predefined;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Objects;
 import java.util.function.UnaryOperator;
 
-import com.cxwudi.library.logger.util.CustomizableFormatter;
-import com.cxwudi.library.logger.util.HandlerUtil;
+import com.cxwudi.library.jul_logger.util.CustomizableFormatter;
+import com.cxwudi.library.jul_logger.util.HandlerUtil;
 
 /**
  * A set of my own log formatter, use it when setting up a logger {@link Handler}
@@ -98,7 +98,7 @@ public final class MyPredefinedFormatter {
 	 */
 	public static CustomizableFormatter getOrCreateVisierStyleFormatter() {
 		if(visierStyleFormatter != null) return visierStyleFormatter;
-		// a function that can shorten a source name like "com.cxwudi.library.logger.LoggerUtilTest" to "c.c.l.l.testLogger"
+		// a function that can shorten a source name like "com.cxwudi.library.jul_logger.LoggerUtilTest" to "c.c.l.l.testLogger"
 		final UnaryOperator<String> shortenPathFunction = source -> {
 			var newSource = new StringBuilder();
 			if (source.contains(".")) {

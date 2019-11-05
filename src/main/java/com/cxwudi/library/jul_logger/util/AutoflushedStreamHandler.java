@@ -1,4 +1,4 @@
-package com.cxwudi.library.logger.util;
+package com.cxwudi.library.jul_logger.util;
 
 import java.io.OutputStream;
 import java.util.logging.Formatter;

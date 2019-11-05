@@ -1,8 +1,8 @@
-package com.cxwudi.library.logger.predefined;
+package com.cxwudi.library.jul_logger.predefined;
 
 import java.util.logging.Logger;
 
-import com.cxwudi.library.logger.util.LoggerUtil;
+import com.cxwudi.library.jul_logger.util.LoggerUtil;
 
 /**
  *  A pre-defined handlers set, can trade this class as a wrapper of {@link LoggerUtil}

@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.cxwudi.library.logger.predefined.MyPredefinedFormatter;
-import com.cxwudi.library.logger.predefined.MyPredefinedHandler;
-import com.cxwudi.library.logger.predefined.MyPredefinedLogger;
-import com.cxwudi.library.logger.util.AutoflushedStreamHandler;
-import com.cxwudi.library.logger.util.HandlerUtil;
-import com.cxwudi.library.logger.util.LoggerUtil;
+import com.cxwudi.library.jul_logger.predefined.MyPredefinedFormatter;
+import com.cxwudi.library.jul_logger.predefined.MyPredefinedHandler;
+import com.cxwudi.library.jul_logger.predefined.MyPredefinedLogger;
+import com.cxwudi.library.jul_logger.util.AutoflushedStreamHandler;
+import com.cxwudi.library.jul_logger.util.HandlerUtil;
+import com.cxwudi.library.jul_logger.util.LoggerUtil;
 
 class LoggerUtilTest {
 
