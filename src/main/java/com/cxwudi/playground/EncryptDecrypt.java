@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 public class EncryptDecrypt {
 	
 	public static void main(String[] args) {
-		logger.info("start");
+		logger.info("start 加中文");
 		Cipher cipher = null;
 		
 		//encryption
@@ -33,15 +33,15 @@ public class EncryptDecrypt {
 			logger.error(e.toString());
 		}
 		
-		var encrptedBytes = new byte[0];
+		var encryptedBytes = new byte[0];
 		try {
-			encrptedBytes = cipher.doFinal("my password".getBytes());
+			encryptedBytes = cipher.doFinal("my password".getBytes());
 			logger.info("encrypting " + "my password");
 		} catch (IllegalBlockSizeException | BadPaddingException e) {
 			logger.error(e.toString());
 		}
 		
-		logger.info("encrypted string: {}, array: {}",new String(encrptedBytes), Arrays.toString(encrptedBytes));
+		logger.info("encrypted string: {}, array: {}",new String(encryptedBytes), Arrays.toString(encryptedBytes));
 		
 		//decryption
 //		try {
@@ -58,7 +58,7 @@ public class EncryptDecrypt {
 		
 		var output = new byte[0];
 		try {
-			output = cipher.doFinal(encrptedBytes);
+			output = cipher.doFinal(encryptedBytes);
 		} catch (IllegalBlockSizeException | BadPaddingException e) {
 			logger.error(e.toString());
 		}
