@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.cxwudi</groupId>
@@ -29,7 +29,7 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
-    
+
     <!-- JavaFx -->
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -41,34 +41,15 @@
       <artifactId>javafx-fxml</artifactId>
       <version>${javafx.version}</version>
     </dependency>
-    
-    <!-- SFL4J logger facade-->
-    <dependency><!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.28</version>
-    </dependency>
-    
-    <!-- Support of async logger -->
-    <dependency><!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
-      <groupId>com.lmax</groupId>
-      <artifactId>disruptor</artifactId>
-      <version>3.4.2</version>
-    </dependency>
-    
-    <!-- Logback and required dependency -->
-    <!-- <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.2.3</version>
-    </dependency> 
-    <dependency>
-        <groupId>org.codehaus.janino</groupId>
-        <artifactId>janino</artifactId>
-        <version>3.1.0</version>
-    </dependency> -->
 
-    <!-- Log4j2, the best logger -->
+    <!-- Scala -->
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>2.13.1</version>
+    </dependency>
+
+    <!-- Log4j2, the best logger + slf4j -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
@@ -79,14 +60,24 @@
       <artifactId>log4j-core</artifactId>
       <version>${log4j2.version}</version>
     </dependency>
-    <dependency><!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+    <dependency> <!-- SFL4J logger facade--> <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.28</version>
+    </dependency>
+    <dependency> <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
       <version>${log4j2.version}</version>
     </dependency>
-    
+    <dependency> <!-- Support of async logger --> <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+      <groupId>com.lmax</groupId>
+      <artifactId>disruptor</artifactId>
+      <version>3.4.2</version>
+    </dependency>
+
   </dependencies>
-  
+
 
   <build>
     <plugins>
@@ -99,20 +90,31 @@
         </configuration>
       </plugin>
 
-      <plugin> <!-- Update Eclipse IDE own maven-compiler-plugin from 3.1.0 to 3.8.1, in order to support compilation 
+      <plugin> <!-- Update Eclipse IDE own maven-compiler-plugin from 3.1.0 to 3.8.1, in order to support compilation
           of Java 11 -->
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
           <release>${java.version}</release>
-          <excludes>
-            <exclude>*/slf4j/*.java</exclude>
-          </excludes>
         </configuration>
       </plugin>
-      
+
+      <plugin> <!-- compiling scala plugin-->
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>4.3.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- create single all-in-one jar -->
-      <!-- <plugin> 
+      <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <executions>
@@ -126,7 +128,7 @@
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                   <mainClass>com.cxwudi.playground.SFL4JLogger</mainClass>
                   <manifestEntries>
-                    <Multi-Release>true</Multi-Release>  
+                    <Multi-Release>true</Multi-Release>
                   </manifestEntries>
                 </transformer>
               </transformers>
@@ -144,43 +146,43 @@
           </execution>
         </executions>
       </plugin> -->
-    
-    <!-- move maven dependencies jar to a folder -->
-    <plugin>
+      <!-- following two plugin can generate executable jar with linked dependency jars-->
+      <!-- move maven dependencies jar to a folder -->
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
-            <execution>
-                <id>copy-dependencies</id>
-                <phase>prepare-package</phase>
-                <goals>
-                    <goal>copy-dependencies</goal>
-                </goals>
-                <configuration>
-                    <outputDirectory>${project.build.directory}/package</outputDirectory>
-                    <overWriteReleases>false</overWriteReleases>
-                    <overWriteSnapshots>false</overWriteSnapshots>
-                    <overWriteIfNewer>true</overWriteIfNewer>
-                </configuration>
-            </execution>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/package</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+            </configuration>
+          </execution>
         </executions>
-    </plugin>
-    
-    <!-- with the maven-dependency-plugin, link these dependencies into jar's MF file -->
-    <plugin>
+      </plugin>
+
+      <!-- with the maven-dependency-plugin, link these dependencies into jar's MF file -->
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.1.2</version>
         <configuration>
-            <archive>
-                <manifest>
-                    <addClasspath>true</addClasspath>
-                    <classpathPrefix>package/</classpathPrefix>
-                    <mainClass>com.cxwudi.playground.SFL4JLogger</mainClass>
-                </manifest>
-            </archive>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>package/</classpathPrefix>
+              <mainClass>com.cxwudi.playground.SFL4JLogger</mainClass>
+            </manifest>
+          </archive>
         </configuration>
-    </plugin>
+      </plugin>
     </plugins>
   </build>
 </project>

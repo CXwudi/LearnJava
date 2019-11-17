@@ -12,7 +12,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.SimpleFormatter;
 
 /**
- * A customzied formatter that put all messages in one line, and ignore printing
+ * A customizable formatter that put all messages in one line, and ignore printing
  * @author CX无敌
  *
  */
@@ -35,7 +35,6 @@ public class CustomizableFormatter extends SimpleFormatter {
 		this.dateFormatter = dateFormatter;
 		this.logFormatter = logFormatter;
 	}
-
 
 	/**
 	 * Format the given message using customized {@link DateTimeFormatter} and {@link LogFormatter}

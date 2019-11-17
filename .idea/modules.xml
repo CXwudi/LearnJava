@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PlayGround.iml" filepath="$PROJECT_DIR$/PlayGround.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../NicoVideoDownloader/niconico-video-downloader.iml" filepath="$PROJECT_DIR$/../NicoVideoDownloader/niconico-video-downloader.iml" />
     </modules>
   </component>
 </project>

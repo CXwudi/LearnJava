@@ -4,7 +4,7 @@ interface Java89Interface{
      * All fields in interface MUST have been initialized, by default is <code>public static final</code>,
      * 
      * It is generally recommended to AVOID such interfaces, 
-     * since every subclass implement this interface will inherience all these fields,
+     * since every subclass implement this interface will inheritance all these fields,
      * and changing one field in the future can potentially cause problems.
      * but sometimes you can find an interface that 
      * has no methods and is used only to contain list of constant values.
@@ -17,7 +17,8 @@ interface Java89Interface{
     
 	default void add() { //define method in java 8 interface 
 		//code...
-	};
+	}
+
 	default void show() {
 		System.out.println("Java8Interface default show");
 		show3();
@@ -27,6 +28,10 @@ interface Java89Interface{
 		System.out.println("Java8Interface static show2");
 		
 	}
+
+	/*
+	 * Intellij doesn't support private method in interface when building a project
+	 */
 	private void show3() {
 		System.out.println("Java9Interface private show3");
 	}
