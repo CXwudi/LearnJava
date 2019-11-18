@@ -30,9 +30,10 @@ interface Java89Interface{
 	}
 
 	/*
-	 * Intellij doesn't support private method in interface when building a project
+	 * Intellij doesn't support private method in interface when building a project.
+	 * work around is to recompile this class, but currently we just make it private static
 	 */
-	private void show3() {
+	private static void show3() {
 		System.out.println("Java9Interface private show3");
 	}
 	/* error: can not override Object method
