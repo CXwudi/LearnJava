@@ -21,7 +21,11 @@ public class LazyVar<T> {
 	 * the create function 
 	 */
 	private Supplier<T> createFunction;
-	
+
+	/**
+	 * create a lazy variable with a creation function that only been executed when {@link LazyVar#get()} called
+	 * @param createInstanceFunc the creation function
+	 */
 	public LazyVar (Supplier<T> createInstanceFunc){
 		objectOpt = Optional.empty();
 		createFunction = createInstanceFunc;
